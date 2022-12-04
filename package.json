@@ -1,5 +1,5 @@
 {
-  "name": "stable-hash",
+  "name": "common-hash",
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",
@@ -8,7 +8,7 @@
   "version": "0.1.0",
   "description": "A simple way to hash most js objects",
   "main": "index.js",
-  "repository": "github.com/arccoza/stable-hash-js",
+  "repository": "github.com/arccoza/common-hash-js",
   "author": "Adrien de Pierres",
   "license": "MIT",
   "private": true,
