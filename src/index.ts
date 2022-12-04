@@ -1,3 +1,4 @@
+//TODO: Add support for bound functions (created with fn.bind)
 export default function commonHash(input: any, val = 0): number {
   if (
     input instanceof Function ||
