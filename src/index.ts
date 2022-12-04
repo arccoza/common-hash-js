@@ -1,7 +1,13 @@
-//TODO: Add support for bound functions (created with fn.bind)
+//NOTE: Added best effort support for bound functions, it's not great though
 export default function commonHash(input: any, val = 0): number {
-  if (
-    input instanceof Function ||
+  // This handles functions and bound functions
+  // A stringified bound function is often simply 'function () { [native code] }'
+  // but the boundFn.name will contain the orginial functions name,
+  // prefixed with 'bound', you can add the boundFn.length prop as well
+  // for number of params
+  if (input instanceof Function) {
+    return hash(`${input.name}|${input.length}|${{input}}`, val)
+  } else if (
     input instanceof Date ||
     input instanceof RegExp ||
     input instanceof String ||
