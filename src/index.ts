@@ -9,14 +9,14 @@ export default function stableHash(input: any, val = 0): number {
     return hash(String(input), val) // Use String() not .toString() for cases where input is null / undefined
   }
 
-  if (input instanceof Object) {
-    input = Object.entries(input).sort(compareEntries)
-  }
-
   if (input[Symbol.iterator]) {
+    // Add a prefix to the hash before hashing each item, so that the hash of [item] !== item
+    val = hash('#', val)
     for (const item of input) {
       val = stableHash(item, val)
     }
+  } else if (input instanceof Object) {
+    return stableHash(Object.entries(input).sort(compareEntries), val)
   }
 
   return val
@@ -34,6 +34,7 @@ function hash(input: string, val = 0) {
   return val
 }
 
+// const t = performance.now()
 // const val = stableHash(() => 'bob')
-// console.log(val, new Uint32Array([val])[0])
+// console.log(performance.now() - t, val, new Uint32Array([val])[0])
 
