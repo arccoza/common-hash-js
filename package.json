@@ -6,7 +6,7 @@
     "build:watch": "tsc --watch"
   },
   "version": "0.1.0",
-  "description": "A simple way to hash most js objects",
+  "description": "A simple, fast way to hash most js objects",
   "main": "lib/index.js",
   "repository": "github.com/arccoza/common-hash-js",
   "author": "Adrien de Pierres",
