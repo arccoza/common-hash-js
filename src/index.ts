@@ -1,4 +1,4 @@
-export default function stableHash(input: any, val = 0): number {
+export default function commonHash(input: any, val = 0): number {
   if (
     input instanceof Function ||
     input instanceof Date ||
@@ -13,10 +13,10 @@ export default function stableHash(input: any, val = 0): number {
     // Add a prefix to the hash before hashing each item, so that the hash of [item] !== item
     val = hash('#', val)
     for (const item of input) {
-      val = stableHash(item, val)
+      val = commonHash(item, val)
     }
   } else if (input instanceof Object) {
-    val = stableHash(Object.entries(input).sort(compareEntries), val)
+    val = commonHash(Object.entries(input).sort(compareEntries), val)
   }
 
   return val
@@ -35,6 +35,6 @@ function hash(input: string, val = 0) {
 }
 
 // const t = performance.now()
-// const val = stableHash(() => 'bob')
+// const val = commonHash(() => 'bob')
 // console.log(performance.now() - t, val, new Uint32Array([val])[0])
 
