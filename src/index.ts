@@ -5,6 +5,7 @@ export default function commonHash(input: any, val = 0): number {
     input instanceof Date ||
     input instanceof RegExp ||
     input instanceof String ||
+    input instanceof Number ||
     !(input instanceof Object))
   {
     return hash(String(input), val) // Use String() not .toString() for cases where input is null / undefined
