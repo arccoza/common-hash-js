@@ -16,7 +16,7 @@ export default function stableHash(input: any, val = 0): number {
       val = stableHash(item, val)
     }
   } else if (input instanceof Object) {
-    return stableHash(Object.entries(input).sort(compareEntries), val)
+    val = stableHash(Object.entries(input).sort(compareEntries), val)
   }
 
   return val
